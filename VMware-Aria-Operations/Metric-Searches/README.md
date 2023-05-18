@@ -1,5 +1,8 @@
 ### VMware Aria Operations | Metric Search Examples
 
+Check out this Blog Post that discusses Metric Searches:
+[www.vCROCS.info | VMware Aria Operations Metric Search](https://www.vcrocs.info/unlocking-the-potential-vmware-aria-operations-metric-searching/)
+
 
 ```
 # --- Show Hosts with High CPU Usage
