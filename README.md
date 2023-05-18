@@ -1,10 +1,15 @@
 ### "Unlocking The Potential"
 
-Collection of items for the VMware Aria Admin  
+Collection of items for the VMware Aria Admin and Automation Enthusiast.
 
 * VMware Aria Automation  
-* VMware Aria Automation Config  
-* VMware Aria Operations  
+  * Templates
+  * abx scripts
+* VMware Aria Automation Config
+  * state files
+  * jobs  
+* VMware Aria Operations
+  * Dashboards  
 * VMware Aria Operations for Logs  
 * PowerShell
 * PowerCLI
