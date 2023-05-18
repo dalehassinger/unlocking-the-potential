@@ -6,14 +6,19 @@ Collection of items for the VMware Aria Admin and Automation Enthusiast.
   * Templates
   * abx scripts
 * VMware Aria Automation Config
-  * state files
+  * state files  
   * jobs  
 * VMware Aria Operations
   * Dashboards  
+  * Views
+  * Metric Search Examples
 * VMware Aria Operations for Logs  
 * PowerShell
+  * Scripts
 * PowerCLI
+  * Scripts
 * Ansible
+  * Playbooks
 
 If you can Script It, You can Automate it!  
 
