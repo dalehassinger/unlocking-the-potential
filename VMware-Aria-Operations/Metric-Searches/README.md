@@ -38,7 +38,11 @@ Metric: Virtual Machine where CPU|Usage % > 0 and Memory|Usage % > 0 and Configu
 
 # --- Show CPU and Memory usage for all VMs in a specific Cluster
 Metric: Virtual Machine where CPU|Usage % > 0 and Memory|Usage % > 0 and Summary|Parent Cluster equals 'Cluster-02'
+```
 
+---
+
+```
 # --- Show Hosts with High CPU Usage
 Metric: Host System where CPU|Usage % > 80
 
@@ -56,4 +60,21 @@ Metric: Host System where Badge|Workload % > 75
 
 # --- Show CPU Usage and Memory Usage for all Hosts In a Specific Cluster
 Metric: Host System where CPU|Usage % > 0 and Memory|Usage % > 0 and Summary|Parent Cluster equals 'Cluster-01'
+```
+
+---
+
+```
+# --- Show Clusters where DRS was turned off
+Metric: Cluster Configuration|DRS Configuration|Enabled of Cluster Compute Resource where Cluster Configuration|DRS Configuration|Enabled equals 'false'
+```
+
+---
+
+```
+# --- Show Datastores where Capacity used is greater than 75%
+Metric: Datastore where Capacity|Used Space % > 75
+
+# --- Show Datastores where Health is less than 100%
+Metric: Datastore where Badge|Health % < 100
 ```
