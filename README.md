@@ -1,4 +1,4 @@
-### Unlocking The Potential
+### "Unlocking The Potential"
 
 Collection of items for the VMware Aria Admin  
 
