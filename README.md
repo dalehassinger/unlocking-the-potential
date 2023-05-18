@@ -8,3 +8,6 @@ Collection of items for the VMware Aria Admin
 * VMware Aria Operations for Logs
 
 If you can Script It, You can Automate it!
+
+Visit this Blog Site for additional Information:
+[(www.vCROCS.info](www.vCROCS.info)
