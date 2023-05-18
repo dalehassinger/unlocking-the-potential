@@ -1,13 +1,13 @@
-###### Unlocking The Potential
+##### Unlocking The Potential
 
-Collection of items for the VMware Aria Admin
+Collection of items for the VMware Aria Admin  
 
-* VMware Aria Automation
-* VMware Aria Automation Config
-* VMware Aria Operations
-* VMware Aria Operations for Logs
+* VMware Aria Automation  
+* VMware Aria Automation Config  
+* VMware Aria Operations  
+* VMware Aria Operations for Logs  
 
-If you can Script It, You can Automate it!
+If you can Script It, You can Automate it!  
 
-Visit this Blog Site for additional Information:
-[(www.vCROCS.info](www.vCROCS.info)
+Visit this Blog Site for additional Information:  
+[www.vCROCS.info](https://www.vCROCS.info)
