@@ -8,29 +8,29 @@ Command:
 salt "vCROCS01" test.ping OR salt "*" test.ping OR salt "vC*" test.ping
 ```
 
-> Results:
+Results:
 vCROCS01:
     True
 
-> Command using --output=json:
+Command using --output=json:
 
 ```
 salt "vCROCS01" test.ping --output=json
 ```
 
-> Results:
+Results:
 {
     "vCROCS01": true
 }
  
  
-> Command:
+Command:
 
 ```
 salt "vCROCS01" disk.usage
 ```
 
-> Results:
+Results:
 vCROCS01:
     ----------
     C:\:
@@ -58,13 +58,13 @@ vCROCS01:
         used:
             3323648.0
 
-> Command:
+Command:
 
 ```
 salt "vCROCS01" disk.usage --output=json
 ```
 
-> Results:
+Results:
 {
     "vCROCS01": {
         "C:\\": {
@@ -85,72 +85,72 @@ salt "vCROCS01" disk.usage --output=json
 }
  
  
-> Command stop a Windows Service:
+Command stop a Windows Service:
 
 ```
 salt "vCROCS01" service.stop "spooler"
 ```
 
-> Results:
+Results:
 vCROCS01:
     True
 
-> Command disable a Windows Service:
+Command disable a Windows Service:
 
 ```
 salt "vCROCS01" service.disable "spooler"
 ```
 
-> Results:
+Results:
 vCROCS01:
     True
 
-> Command get status of a Windows Service:
+Command get status of a Windows Service:
 
 ```
 salt "vCROCS01" service.status "spooler"
 ```
 
-> Results:
+Results:
 vCROCS01:
     False
 
-> Command see if a Windows Service is enabled:
+Command see if a Windows Service is enabled:
 
 ```
 salt "vCROCS01" service.enabled "spooler"
 ```
 
-> Results:
+Results:
 vCROCS01:
     False
 
 
  
-> Command Copy a file to a Windows Service - Source File | Destination File:
+Command Copy a file to a Windows Service - Source File | Destination File:
 
 ```
 salt "vCROCS01" cp.get_file "salt://installer_file.msi" "C:\install_files\installer_file.msi"
 ```
 
-> Results:
+Results:
 vCROCS01:
     C:\install_files\installer_file.msi
 
-> Command Delete a file from a Windows Service:
+Command Delete a file from a Windows Service:
 
 ```
 salt "vCROCS01" file.remove 'C:\install_files\installer_file.msi'
 ```
 
-> Results:
+Results:
 vCROCS01:
     True
  
 
 
  
-> Command add grain data to a minion:
+Command add grain data to a minion:
 
 ```
 salt "vCROCS01" grains.append azure_vm "True"
@@ -161,73 +161,73 @@ vCROCS01:
     azure_vm:
         - True
 
-> Command get grain custom data from a minion:
+Command get grain custom data from a minion:
 
 ```
 salt "vCROCS01" grains.get azure_vm
 ```
 
-> Results:
+Results:
 vCROCS01:
     - True
 
-> Command get grain os data from a minion:
+Command get grain os data from a minion:
 
 ```
 salt "vCROCS01" grains.get os
 ```
 
-> Results:
+Results:
 vCROCS01:
     Windows
 
-> Command get grain os data from a minion:
+Command get grain os data from a minion:
 
 ```
 salt "vCROCS01" grains.get osfullname
 ```
 
-> Results:
+Results:
 vCROCS01:
     Microsoft Windows Server 2016 Datacenter
 
-> Command get grain domain data from a minion:
+Command get grain domain data from a minion:
 
 ```
 salt "vCROCS01" grains.get domain
 ```
 
-> Results:
+Results:
 vCROCS01:
     vcrocs.info
 
-> Command get grain IP data from a minion:
+Command get grain IP data from a minion:
 
 ```
 salt "vCROCS01" grains.get fqdn_ip4
 ```
 
-> Results:
+Results:
 vCROCS01:
     - 192.168.99.99
 
-> Command sync minion grain data with salt master:
+Command sync minion grain data with salt master:
 
 ```
 salt "vCROCS01" saltutil.sync_grains
 ```
 
-> Results:
+Results:
 vCROCS01:
  
  
-> Command run powershell command:
+Command run powershell command:
 
 ```
 salt "vCROCS01" cmd.run 'Get-Service | Where-Object {$_.Status -eq "Running"}' shell=PowerShell
 ```
 
-> Results:
+Results:
 vCROCS01:
 
     Status   Name               DisplayName
@@ -241,13 +241,13 @@ vCROCS01:
     Running  COMSysApp          COM+ System Application
     Running  CoreMessagingRe... CoreMessaging
 
-> Command run powershell script with script saved on salt master File Server: 
+Command run powershell script with script saved on salt master File Server: 
 
 ```
 salt "vCROCS01" cmd.script source="salt://dev/qualys_install_azure.ps1" shell=powershell
 ```
 
-> Results:
+Results:
 Runs all line of code in script the same as if script was saved local on minion.
  
 ---
