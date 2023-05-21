@@ -2,17 +2,17 @@
 
 Collection of items for the VMware Aria Admin and Automation | Monitoring | Logging Enthusiast.
 
-* VMware Aria Automation  
+* VMware Aria Automation | vRA  
   * Templates
   * abx scripts
-* VMware Aria Automation Config
+* VMware Aria Automation Config | SaltStack Config
   * state files  
   * jobs  
-* VMware Aria Operations
+* VMware Aria Operations | vROPS
   * Dashboards  
   * Views
   * Metric Search Examples
-* VMware Aria Operations for Logs  
+* VMware Aria Operations for Logs | Log Insight  
 * PowerShell
   * Scripts
 * PowerCLI
