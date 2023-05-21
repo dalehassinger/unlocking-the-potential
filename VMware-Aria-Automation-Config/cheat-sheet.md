@@ -1,6 +1,7 @@
 Here is a list of commands that I use the most as a Windows Administrator.  
 This cheat sheet should help you get Started.  
 
+---
 
 Command | Ping:
 
@@ -17,6 +18,8 @@ vCROCS01:
     True
 ```
 
+---
+
 Command | Ping | with --output=json:
 
 ```
@@ -29,6 +32,8 @@ Results:
     "vCROCS01": true
 }
 ```
+
+---
 
 Command:    
 
@@ -66,6 +71,8 @@ vCROCS01:
             3323648.0
 ```
 
+---
+
 Command:  
 
 ```
@@ -94,6 +101,8 @@ Results:
 }
 ```
  
+---
+
 Command stop a Windows Service:
 
 ```
@@ -105,6 +114,8 @@ Results:
 vCROCS01:
     True
 ```
+
+---
 
 Command disable a Windows Service:
 
@@ -118,6 +129,8 @@ vCROCS01:
     True
 ```
 
+---
+
 Command get status of a Windows Service:
 
 ```
@@ -129,6 +142,8 @@ Results:
 vCROCS01:
     False
 ```
+
+---
 
 Command see if a Windows Service is enabled:
 
@@ -142,6 +157,8 @@ vCROCS01:
     False
 ```
 
+---
+
 Command Copy a file to a Windows Service - Source File | Destination File:
 
 ```
@@ -153,6 +170,8 @@ Results:
 vCROCS01:
     C:\install_files\installer_file.msi
 ```
+
+---
 
 Command Delete a file from a Windows Service:
 
@@ -166,7 +185,7 @@ vCROCS01:
     True
 ```
 
-
+---
  
 Command add grain data to a minion:
 
@@ -181,6 +200,8 @@ vCROCS01:
         - True
 ```
 
+---
+
 Command get grain custom data from a minion:
 
 ```
@@ -192,6 +213,8 @@ Results:
 vCROCS01:
     - True
 ```
+
+---
 
 Command get grain os data from a minion:
 
@@ -205,6 +228,8 @@ vCROCS01:
     Windows
 ```
 
+---
+
 Command get grain os data from a minion:
 
 ```
@@ -216,6 +241,8 @@ Results:
 vCROCS01:
     Microsoft Windows Server 2016 Datacenter
 ```
+
+---
 
 Command get grain domain data from a minion:
 
@@ -229,6 +256,8 @@ vCROCS01:
     vcrocs.info
 ```
 
+---
+
 Command get grain IP data from a minion:
 
 ```
@@ -241,6 +270,8 @@ vCROCS01:
     - 192.168.99.99
 ```
 
+---
+
 Command sync minion grain data with salt master:
 
 ```
@@ -252,6 +283,8 @@ Results:
 vCROCS01:
 ```
  
+---
+
 Command run powershell Command:  
 
 ```
@@ -273,6 +306,8 @@ vCROCS01:
     Running  COMSysApp          COM+ System Application
     Running  CoreMessagingRe... CoreMessaging
 ```
+
+---
 
 Command run powershell script with script saved on salt master File Server: 
 
