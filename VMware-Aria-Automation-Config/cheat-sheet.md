@@ -204,8 +204,11 @@ vCROCS01:
 ---
 
  
-> Command join minion to a Windows Domain. You can also specify OU that computer object will be located:
+Command join minion to a Windows Domain. You can also specify OU that computer object will be located:
+
+```
 salt "vCROCS01" system.join_domain domain='vcrocs.info' username='vcrocs\administrator' password='VMware1!' account_ou='OU=Dev,OU=Servers,DC=vcrocs,DC=info' account_exists=False restart=True
+ ```
  
 ---
 
