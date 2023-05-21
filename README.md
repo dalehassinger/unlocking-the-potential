@@ -1,6 +1,6 @@
 ### "Unlocking The Potential"
 
-Collection of items for the VMware Aria Admin and Automation Enthusiast.
+Collection of items for the VMware Aria Admin and Automation | Monitoring | Logging Enthusiast.
 
 * VMware Aria Automation  
   * Templates
