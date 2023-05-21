@@ -189,11 +189,15 @@ salt "vCROCS01" cmd.script source="salt://dev/qualys_install_azure.ps1" shell=po
 > Results:
 Runs all line of code in script the same as if script was saved local on minion.
  
- 
-> Command minion reboot:
-salt "vCROCS01" system.reboot 0
+---
 
-> Results:
+Command minion reboot:
+
+```
+salt "vCROCS01" system.reboot 0
+```
+
+Results:
 vCROCS01:
     True
  
@@ -206,10 +210,13 @@ salt "vCROCS01" system.join_domain domain='vcrocs.info' username='vcrocs\adminis
 ---
 
  
-> Command add a registry key to minion or change value of an existing registry key:
-salt "vCROCS01" reg.set_value HKEY_LOCAL_MACHINE 'SYSTEM\vCROCS' 'Created_by_User' 'dhassinger'
+Command add a registry key to minion or change value of an existing registry key:
 
-> Results:
+```
+salt "vCROCS01" reg.set_value HKEY_LOCAL_MACHINE 'SYSTEM\vCROCS' 'Created_by_User' 'dhassinger'
+```
+
+Results:
 vCROCS01:
     True
  
