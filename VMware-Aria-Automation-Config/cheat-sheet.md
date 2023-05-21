@@ -1,5 +1,5 @@
-Here is a list of commands that I use the most as a Windows Administrator.
-This cheat sheet should help you get Started. 
+Here is a list of commands that I use the most as a Windows Administrator.  
+This cheat sheet should help you get Started.  
 
 
 Command:
