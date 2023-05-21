@@ -36,6 +36,7 @@ salt "vCROCS01" disk.usage
 ```
 
 Results:  
+```
 vCROCS01:
     ----------
     C:\:
@@ -62,6 +63,7 @@ vCROCS01:
             E:\
         used:
             3323648.0
+```
 
 Command:  
 
