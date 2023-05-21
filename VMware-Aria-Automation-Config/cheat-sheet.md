@@ -2,29 +2,31 @@ Here is a list of commands that I use the most as a Windows Administrator.
 This cheat sheet should help you get Started.  
 
 
-Command:
+Command | Ping:
 
 ```
-salt "vCROCS01" test.ping OR salt "*" test.ping OR salt "vC*" test.ping
+salt "vCROCS01" test.ping  
+salt "*" test.ping  
+salt "vC*" test.ping  
 ```
 
 Results:
 vCROCS01:
     True
 
-Command using --output=json:
+Command | Ping | Using --output=json:
 
 ```
 salt "vCROCS01" test.ping --output=json
 ```
 
-Results:
-{
-    "vCROCS01": true
-}
+Results:  
+{  
+    "vCROCS01": true  
+}  
  
  
-Command:
+Command:  
 
 ```
 salt "vCROCS01" disk.usage
