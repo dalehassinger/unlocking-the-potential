@@ -11,10 +11,13 @@ salt "vC*" test.ping
 ```
 
 Results:  
+
+```
 vCROCS01:
     True
+```
 
-Command | Ping | Using --output=json:
+Command | Ping | with --output=json:
 
 ```
 salt "vCROCS01" test.ping --output=json
