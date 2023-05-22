@@ -1,0 +1,4 @@
+###### Windows Services
+
+The Windows-Service.sls file has the following Examples:
+- [*] Stop a Service
