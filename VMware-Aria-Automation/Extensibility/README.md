@@ -1,4 +1,6 @@
-#### VMware Aria Automation Extensibilty
+#### VMware Aria Automation Extensibilty  
+
+---
 
 1. Subscription Condition Examples:  
 
