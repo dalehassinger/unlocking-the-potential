@@ -1,0 +1,1 @@
+Use the Cheat Sheet to learn how to run salt commands as a Windows Server Administrator.
