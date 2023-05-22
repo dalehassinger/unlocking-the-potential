@@ -2,6 +2,7 @@
 
 Subscription Condition Examples:  
 
+---
 
 Only run the subscription for a spefic Cloud Template:
 ```
