@@ -31,4 +31,4 @@ This is my way of giving back to the vCommunity. This code and examples are all 
 
 If anyone would have some examples that they would want to include in this repository to share with the vCommunity, please reach out.  
 
-#vExpert  
+#vExpert #VMware #automation #monitoring #salt #powershell
