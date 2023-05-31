@@ -1,0 +1,26 @@
+formatVersion: 1
+inputs:
+  Data-Disk-Size:
+    type: string
+    title: Data Disk Size
+    default: '5'
+  VMName:
+    type: string
+    title: VM Name
+    default: DBH-000
+resources:
+  Cloud_Azure_Disk_1:
+    type: Cloud.Azure.Disk
+    properties:
+      capacityGb: ${input.Data-Disk-Size}
+      name: Data
+      managedDiskType: Standard SSD
+  Cloud_Azure_Machine_1:
+    type: Cloud.Azure.Machine
+    properties:
+      image: Azure_W2K19
+      flavor: Azure-Standard_A1_1_1.75
+      name: ${input.VMName}
+      resourceGroupName: RG-vCROCS-East
+      attachedDisks:
+        - source: ${resource.Cloud_Azure_Disk_1.id}

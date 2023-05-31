@@ -1,0 +1,1 @@
+#### Cloud Template to create a Azure Server
