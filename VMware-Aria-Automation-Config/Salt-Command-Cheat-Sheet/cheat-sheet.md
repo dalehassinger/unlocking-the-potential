@@ -159,7 +159,7 @@ vCROCS01:
 
 ---
 
-Command Copy a file to a Windows Service - Source File | Destination File:
+Command Copy a file to a Windows Server - Source File | Destination File:
 
 ```
 salt "vCROCS01" cp.get_file "salt://installer_file.msi" "C:\install_files\installer_file.msi"
@@ -173,7 +173,7 @@ vCROCS01:
 
 ---
 
-Command Delete a file from a Windows Service:
+Command Delete a file from a Windows Server:
 
 ```
 salt "vCROCS01" file.remove 'C:\install_files\installer_file.msi'
