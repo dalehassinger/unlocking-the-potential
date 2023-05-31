@@ -1,0 +1,1 @@
+#### Cloud Template to create a Ubuntu Server and also install the salt minion
