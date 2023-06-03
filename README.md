@@ -35,7 +35,7 @@ If anyone would have some examples that they would want to include in this repos
 
 ### Release Details:
 
-2023-06-03:
+2023-06-03:  
 Initial Release.  
 * Salt State Examples.  
 * VMware Aria Automation Template Examples.  
