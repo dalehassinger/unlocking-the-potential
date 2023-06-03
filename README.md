@@ -32,3 +32,11 @@ This is my way of giving back to the vCommunity. This code and examples are all 
 If anyone would have some examples that they would want to include in this repository to share with the vCommunity, please reach out.  
 
 #vExpert #VMware #automation #monitoring #salt #powershell
+
+### Release Details:
+
+2023-06-03:
+Initial Release.  
+* Salt State Examples.  
+* VMware Aria Automation Template Examples.  
+* VMware Aria Operations Metric Search Examples.  
