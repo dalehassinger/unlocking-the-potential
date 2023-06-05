@@ -37,6 +37,12 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
   
+2023-06-05:  
+* Added screen shot of Arial Operations Dashboard.  
+* (Dashboard Screen Shot[https://github.com/dalehassinger/unlocking-the-potential/tree/main/VMware-Aria-Operations/Dashboards/TAM-Environment-Overview])  
+
+---
+  
 2023-06-03:  
 Initial Release.  
 * Salt State Examples.  
