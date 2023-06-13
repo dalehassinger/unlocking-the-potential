@@ -1,0 +1,12 @@
+{"ef21c31a-76b1-403b-94c4-95a04d282640": {
+   "resourceKinds": [{
+      "resourceKindKey": "VirtualMachine",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1686669393937,
+   "name": "TAM - VM Number of Snapshots by name",
+   "formula": "count(${this, attribute=diskspace|snapshot|name})",
+   "description": "",
+   "unitId": "",
+   "modifiedBy": "cfa8ecac-bdfd-4e4c-a82e-35d9d8e17eb3"
+}}
