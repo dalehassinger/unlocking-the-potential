@@ -11,6 +11,7 @@ Collection of items for the VMware Aria Admin and Automation | Monitoring | Logg
 * VMware Aria Operations | vROPS
   * Dashboards  
   * Views
+  * Super Metrics
   * Metric Search Examples
 * VMware Aria Operations for Logs | Log Insight  
 * PowerShell
@@ -34,6 +35,11 @@ If anyone would have some examples that they would want to include in this repos
 #vExpert #VMware #automation #monitoring #salt #powershell
 
 ### Release Details:
+
+---
+  
+2023-06-13:  
+* Added super metric and view to show VM Snap Count
 
 ---
   
