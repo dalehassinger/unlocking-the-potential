@@ -38,6 +38,11 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
   
+2023-06-24:  
+* Added some PowerCLI Examples from a PowerBlock Presentation that I did.
+
+---
+  
 2023-06-13:  
 * Added super metric and view to show VM Snap Count
 
