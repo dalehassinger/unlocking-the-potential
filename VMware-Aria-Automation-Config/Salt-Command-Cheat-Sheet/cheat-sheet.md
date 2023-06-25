@@ -354,3 +354,27 @@ Results:
 vCROCS01:
     True
 ```
+
+---
+
+ 
+Command grains.get:
+
+```
+salt "EXPLORE-WIN-01" grains.get os
+```
+
+Results:  
+```
+EXPLORE-WIN-01:
+    Windows
+```
+
+```
+salt "EXPLORE-WIN-01" --out=newline_values_only grains.get os
+```
+
+Results:  
+```
+Windows
+```

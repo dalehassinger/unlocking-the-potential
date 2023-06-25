@@ -40,6 +40,7 @@ If anyone would have some examples that they would want to include in this repos
   
 2023-06-25:  
 * State file example using jinga to get a value from grains file and create a Windows registry key based on that value.  
+* Add grains.get to the Salt-Command-Cheat-Sheet  
 
 ---
   
