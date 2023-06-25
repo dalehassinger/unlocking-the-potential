@@ -368,7 +368,9 @@ Results:
 ```
 EXPLORE-WIN-01:
     Windows
-```
+```  
+
+By Adding --out=newline_values_only only the value is returned.   
 
 ```
 salt "EXPLORE-WIN-01" --out=newline_values_only grains.get os
