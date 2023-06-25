@@ -38,6 +38,11 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
   
+2023-06-25:  
+* State file example using jinga to get a value from grains file and create a Windows registry key based on that value.  
+
+---
+  
 2023-06-24:  
 * Added some PowerCLI Examples from a PowerBlock Presentation that I did.
 
