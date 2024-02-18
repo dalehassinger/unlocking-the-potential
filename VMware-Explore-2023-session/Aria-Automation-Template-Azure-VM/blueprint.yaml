@@ -1,0 +1,56 @@
+formatVersion: 1
+inputs:
+  Data-Disk-Size:
+    type: string
+    title: Data Disk Size
+    default: '5'
+  VMName:
+    type: string
+    title: Azure VM Name
+    default: DBH-000
+  flavor:
+    type: string
+    title: Azure Flavor
+    description: Azure VM Flavor
+    default: Azure-Basic_A1_1_1.75
+    enum:
+      - Azure-Standard_A1_1_1.75
+      - Azure-Basic_A1_1_1.75
+  image:
+    type: string
+    title: Azure Image
+    description: Azure VM Image
+    default: Azure_W2K19
+    enum:
+      - Azure_W2K19
+      - Azure_W2k22
+  resourceGroupName:
+    type: string
+    title: Resource Group Name
+    description: Azure Resource Group Name
+    default: RG-Dale-Hassinger-East
+    enum:
+      - RG-Dale-Hassinger-East
+      - RG-Explore-2023-East
+resources:
+  Cloud_Azure_ResourceGroup_1:
+    type: Cloud.Azure.ResourceGroup
+    properties:
+      name: ${input.resourceGroupName}
+  Cloud_Azure_Disk_1:
+    type: Cloud.Azure.Disk
+    properties:
+      capacityGb: ${input.Data-Disk-Size}
+      name: ${input.VMName + '-Data'}
+      managedDiskType: Standard SSD
+  Cloud_Azure_Machine_1:
+    type: Cloud.Azure.Machine
+    properties:
+      image: ${input.image}
+      flavor: ${input.flavor}
+      name: ${input.VMName}
+      resourceGroupName: ${resource.Cloud_Azure_ResourceGroup_1.resourceName}
+      attachedDisks:
+        - source: ${resource.Cloud_Azure_Disk_1.id}
+      networks:
+        - assignPublicIpAddress: false

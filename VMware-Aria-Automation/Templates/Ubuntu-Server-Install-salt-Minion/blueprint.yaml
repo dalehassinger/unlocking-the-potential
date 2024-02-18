@@ -1,0 +1,55 @@
+formatVersion: 1
+name: ubuntu-with-minion
+version: 1
+inputs:
+  CustomizationSpec:
+    type: string
+    description: Customization Specification
+    default: CustomSpec-Linux
+    title: CustomizationSpec
+  VMName:
+    type: string
+    title: VM Name
+    minLength: 1
+    maxLength: 12
+    default: LINUX-U-000
+  IP:
+    type: string
+    default: 192.168.0.240
+resources:
+  Cloud_Network_1:
+    type: Cloud.Network
+    properties:
+      networkType: existing
+      constraints:
+        - tag: Network:PROD-VMs
+  Cloud_SaltStack_1:
+    type: Cloud.SaltStack
+    properties:
+      hosts:
+        - ${resource.Cloud_Machine_1.id}
+      masterId: saltstack_enterprise_installer
+      stateFiles: []
+#        - /vcrocs/vra.sls
+      saltEnvironment: base
+      additionalMinionParams:
+        grains:
+          roles:
+            - webserver
+  Cloud_Machine_1:
+    type: Cloud.Machine
+    properties:
+      image: vCenter-ubuntu-20
+      flavor: vCenter-Medium-1-2
+      name: ${input.VMName}
+      remoteAccess:
+        authentication: usernamePassword
+        username: administrator
+        password: VMware1!
+      customizationSpec: ${input.CustomizationSpec}
+      constraints:
+        - tag: Compute:PROD-VMs
+      networks:
+        - network: ${resource.Cloud_Network_1.id}
+          assignment: static
+          address: ${input.IP}

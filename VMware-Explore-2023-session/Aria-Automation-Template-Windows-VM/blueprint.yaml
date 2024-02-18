@@ -1,0 +1,144 @@
+formatVersion: 1
+inputs:
+  CustomizationSpec:
+    type: string
+    description: Customization Specification
+    default: CustomSpec-W2k19
+    title: CustomizationSpec
+  VMName:
+    type: string
+    title: VM Name
+    minLength: 1
+    maxLength: 15
+    default: WIN-19-000
+  IP:
+    type: string
+    default: 192.168.0.200
+  EDrive:
+    type: integer
+    title: E-Drive
+    default: 0
+    description: Enter 0 to disable the disk and not create
+  LDrive:
+    type: integer
+    title: L-Drive
+    default: 0
+    description: Enter 0 to disable the disk and not create
+  TDrive:
+    type: integer
+    title: T-Drive
+    default: 0
+    description: Enter 0 to disable the disk and not create
+  Size:
+    type: string
+    title: Size
+    description: VM MEM | CPU.
+    default: vCenter-Medium-1-2
+    enum:
+      - vCenter-Small-1-1
+      - vCenter-Medium-1-2
+      - vCenter-Large-1-4
+      - vCenter-X-Large-1-8
+  SQL:
+    type: string
+    title: SQL
+    description: Selecting SQL will format all DATA drives with 64k allocation.
+    default: 'False'
+    enum:
+      - 'True'
+      - 'False'
+  OS-Version:
+    type: string
+    title: OS-Version
+    description: Windows OS Version.
+    default: vCenter-W2K19
+    enum:
+      - vCenter-W2K19
+      - vCenter-W2K22
+  Cluster:
+    type: string
+    title: Cluster
+    description: vCenter Cluster.
+    default: Cluster:PROD
+    enum:
+      - Cluster:MGMT
+      - Cluster:PROD
+resources:
+  Network:
+    type: Cloud.Network
+    properties:
+      networkType: existing
+      constraints:
+        - tag: Network:PROD-VMs
+  Virtual_Machine:
+    type: Cloud.Machine
+    properties:
+      image: ${input.OS-Version}
+      flavor: ${input.Size}
+      customizationSpec: ${input.CustomizationSpec}
+      name: ${input.VMName}
+      constraints:
+        - tag: ${input.Cluster}
+      remoteAccess:
+        authentication: usernamePassword
+        username: administrator
+        password: VMware1!
+      networks:
+        - network: ${resource.Network.id}
+#          assignment: dynamic
+          assignment: static
+          address: ${input.IP}
+      attachedDisks: ${map_to_object(resource.Cloud_Volume_E[*].id + resource.Cloud_Volume_L[*].id + resource.Cloud_Volume_T[*].id , "source")}
+      edrivesize: ${input.EDrive}
+      ldrivesize: ${input.LDrive}
+      sql: ${input.SQL}
+  # - VMware Max SCSI Controllers is 4
+  # - VMware Max Unit per SCSI Controllers is 15
+  Cloud_Volume_E:
+    type: Cloud.Volume
+    properties:
+      capacityGb: ${input.EDrive}
+      count: '${input.EDrive == 0 ? 0 : 1 }'
+      SCSIController: SCSI_Controller_1
+      unitNumber: 0
+      provisioningType: thin
+  Cloud_Volume_L:
+    type: Cloud.Volume
+    properties:
+      capacityGb: ${input.LDrive}
+      count: '${input.LDrive == 0 ? 0 : 1 }'
+      SCSIController: SCSI_Controller_1
+      unitNumber: 1
+      provisioningType: thin
+  Cloud_Volume_T:
+    type: Cloud.Volume
+    properties:
+      capacityGb: ${input.TDrive}
+      count: '${input.TDrive == 0 ? 0 : 1 }'
+      SCSIController: SCSI_Controller_1
+      unitNumber: 2
+      provisioningType: thin
+  Cloud_SaltStack_1:
+    type: Cloud.SaltStack
+    properties:
+      hosts:
+        - ${resource.Virtual_Machine.id}
+      masterId: saltstack_enterprise_installer
+      stateFiles:
+  #[]
+#        - /states/windows-server-new-drives.sls
+        - /states/windows-server-explore-2023/init.sls
+      saltEnvironment: base
+      additionalMinionParams:
+        grains:
+          vCROCS_Roles:
+            - webserver
+            - database
+          vCROCS_Drive_E_Size:
+            - ${input.EDrive}
+          vCROCS_Drive_L_Size:
+            - ${input.LDrive}
+          vCROCS_Drive_T_Size:
+            - ${input.TDrive}
+          vCROCS_SQL:
+            - ${input.SQL}
