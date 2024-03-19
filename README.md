@@ -41,16 +41,26 @@ If anyone would have some examples that they would want to include in this repos
 
 #vExpert #VMware #automation #monitoring #salt #powershell
 
-### Release Details:
+### Release Details:  
+
 ---
+
+2024-03-19
+* added some Aria Automation Actions and Workflow to send messages to Microsoft Teams and Google Spaces.  
+* Released with this Blog Post | [VMware Aria Automation | How to send messages and updates](https://www.vcrocs.info/aria-automation-messages-updates/)  
+
+---
+
 2024-02-17
 * added PowerShell script to create a html file that has VMRC links for VMs. HTML file to be used with Text Display Widget within Aria Operations.  
 
 ---
+
 2024-01-12
 * added some common commands that I use with Photon OS. Command to set Photon password to never expire I use the most.  
 
 ---
+
 2024-01-10
 * added a Aria Automation Action that allows you to pick a VM from a Picker List and only return the VM Name. I then add the VM Name to the Deployment name to make it unique.  
 
