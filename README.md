@@ -45,6 +45,12 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
 
+2024-04-30
+* added a PowerShell Script to work with ollama API
+* Released with this Blog Post | [Automation Code Creation with ollama](https://www.vcrocs.info/ollama/)  
+
+---
+
 2024-03-19
 * added some Aria Automation Actions and Workflow to send messages to Microsoft Teams and Google Spaces.  
 * Released with this Blog Post | [VMware Aria Automation | How to send messages and updates](https://www.vcrocs.info/aria-automation-messages-updates/)  
