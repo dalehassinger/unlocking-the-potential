@@ -45,13 +45,13 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
 
-2024-05-28
-* added a Aria Operations Dashboard for vCenter VM Observability
+2024-05-28  
+* added a Aria Operations Dashboard for vCenter VM Observability  
 
 ---
 
 2024-04-30
-* added a PowerShell Script to work with ollama API
+* added a PowerShell Script to work with ollama API  
 * Released with this Blog Post | [Automation Code Creation with ollama](https://www.vcrocs.info/ollama/)  
 
 ---
