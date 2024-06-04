@@ -45,6 +45,11 @@ If anyone would have some examples that they would want to include in this repos
 
 ---
 
+2024-06-04  
+* added a Aria Operations Dashboard for Aria Appliances VM Observability  
+
+---
+
 2024-05-28  
 * added a Aria Operations Dashboard for vCenter VM Observability  
 

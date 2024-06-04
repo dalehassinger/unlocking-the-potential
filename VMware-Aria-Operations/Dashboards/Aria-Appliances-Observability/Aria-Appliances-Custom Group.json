@@ -1,0 +1,109 @@
+{
+   "customGroups": [{
+      "resourceKind": "Manual Application",
+      "membershipDefinition": {"ruleGroups": [
+         {
+            "resourceKind": "VirtualMachine",
+            "adapterKind": "VMWARE",
+            "rules": [
+               {
+                  "ruleType": "StringMetricPropertyRule",
+                  "ruleMetricKey": "summary|config|productName",
+                  "isProperty": true,
+                  "ruleStringOperator": "CONTAINS",
+                  "ruleStringValue": "Aria"
+               },
+               {
+                  "ruleOperator": "GREATER_THAN",
+                  "ruleValue": 0,
+                  "ruleType": "NumericMetricPropertyRule",
+                  "ruleMetricKey": "sys|osUptime_latest",
+                  "isProperty": false
+               }
+            ]
+         },
+         {
+            "resourceKind": "VirtualMachine",
+            "adapterKind": "VMWARE",
+            "rules": [
+               {
+                  "ruleType": "StringMetricPropertyRule",
+                  "ruleMetricKey": "summary|config|productName",
+                  "isProperty": true,
+                  "ruleStringOperator": "CONTAINS",
+                  "ruleStringValue": "vrealize"
+               },
+               {
+                  "ruleOperator": "GREATER_THAN",
+                  "ruleValue": 0,
+                  "ruleType": "NumericMetricPropertyRule",
+                  "ruleMetricKey": "sys|osUptime_latest",
+                  "isProperty": false
+               }
+            ]
+         },
+         {
+            "resourceKind": "VirtualMachine",
+            "adapterKind": "VMWARE",
+            "rules": [
+               {
+                  "ruleType": "StringMetricPropertyRule",
+                  "ruleMetricKey": "summary|config|productName",
+                  "isProperty": true,
+                  "ruleStringOperator": "CONTAINS",
+                  "ruleStringValue": "Log Insight"
+               },
+               {
+                  "ruleOperator": "GREATER_THAN",
+                  "ruleValue": 0,
+                  "ruleType": "NumericMetricPropertyRule",
+                  "ruleMetricKey": "sys|osUptime_latest",
+                  "isProperty": false
+               }
+            ]
+         }
+      ]},
+      "adapterKind": "Container",
+      "autoResolveMembership": true,
+      "name": "DBH | Aria Appliances",
+      "description": "",
+      "started": true
+   }],
+   "customGroupTypes": [{
+      "resourceKind": "Manual Application",
+      "localization": [
+         {
+            "resourceKindName": "Manuelle Anwendung",
+            "locale": "de"
+         },
+         {
+            "resourceKindName": "手動應用程式",
+            "locale": "zh_TW"
+         },
+         {
+            "resourceKindName": "수동 애플리케이션",
+            "locale": "ko"
+         },
+         {
+            "resourceKindName": "手動アプリケーション",
+            "locale": "ja"
+         },
+         {
+            "resourceKindName": "Manual Application",
+            "locale": "en"
+         },
+         {
+            "resourceKindName": "手动应用程序",
+            "locale": "zh_CN"
+         },
+         {
+            "resourceKindName": "Application manuelle",
+            "locale": "fr"
+         },
+         {
+            "resourceKindName": "Aplicación manual",
+            "locale": "es"
+         }
+      ]
+   }]
+}
