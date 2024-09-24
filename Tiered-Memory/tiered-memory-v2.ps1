@@ -2,7 +2,9 @@
 Import-Module Posh-SSH
 
 # Define server details (It's recommended to handle credentials securely, e.g., use a secure vault)
-$server = "192.168.6.103"
+#$server = "192.168.6.103"
+$server = "192.168.6.104"
+
 $username = "root"
 $password = "VMware1!"  # Consider using Get-Credential or Secure store for passwords
 
@@ -71,4 +73,4 @@ $tieredMEM = $tieredMEM | Where-Object { $_.Name -notlike "vCLS-*" }
 $tieredMEM | Format-Table -AutoSize
 
 # Close the SSH session
-Remove-SSHSession -SessionId $sshSession.SessionId
+$removeSSH = Remove-SSHSession -SessionId $sshSession.SessionId
