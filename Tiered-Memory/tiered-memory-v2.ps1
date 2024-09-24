@@ -51,7 +51,7 @@ foreach ($line in $lines) {
 # Remove 'vm.' prefix from each VM Name
 $tieredMEM | ForEach-Object { $_.Name = $_.Name -replace '^vm\.', '' }
 
-# Create a hashtable for easy mapping of VMX Cartel IDs to Display Names
+# Create a hashtable for easy mapping of VMXCartelIDs to Display Names
 $vmNameMap = @{}
 foreach ($entry in $VMXCartelID) {
     $vmNameMap[$entry.VMXCartelID] = $entry.DisplayName
