@@ -115,11 +115,11 @@ $smtpServer  = "smtp.gmail.com"
 $smtpPort    = 587
 $appPassword = "kl-HackMe-tl"
 
-$emailMessage = New-Object system.net.mail.mailmessage
-$emailMessage.From = $fromEmail
+$emailMessage            = New-Object system.net.mail.mailmessage
+$emailMessage.From       = $fromEmail
 $emailMessage.To.Add($toEmail)
-$emailMessage.Subject = $subject
-$emailMessage.Body = $body
+$emailMessage.Subject    = $subject
+$emailMessage.Body       = $body
 $emailMessage.IsBodyHtml = $true
 
 if (Test-Path $excelFilePath) {
@@ -130,8 +130,8 @@ if (Test-Path $excelFilePath) {
     exit 1
 }
 
-$smtpClient = New-Object system.net.mail.smtpclient($smtpServer, $smtpPort)
-$smtpClient.EnableSsl = $true
+$smtpClient             = New-Object system.net.mail.smtpclient($smtpServer, $smtpPort)
+$smtpClient.EnableSsl   = $true
 $smtpClient.Credentials = New-Object System.Net.NetworkCredential($fromEmail, $appPassword)
 
 try {
