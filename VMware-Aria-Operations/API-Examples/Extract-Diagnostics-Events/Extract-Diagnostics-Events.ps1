@@ -12,9 +12,9 @@ $uri = "$opsURL/suite-api/api/auth/token/acquire?_no_links=true"
 
 # Create authentication body
 $bodyHashtable = @{
-    username = $opsUsername
+    username   = $opsUsername
     authSource = $authSource
-    password = $opsPassword
+    password   = $opsPassword
 }
 
 # Convert body to JSON
@@ -41,7 +41,7 @@ $OPSDiagData = $results.events
 
 # ----- Prepare Excel Output -----
 $excelFilePath = "/Users/hdale/github/PS-TAM-Lab/aria-operations-diag-data.xlsx"
-$sheetName = "Diagnostic-Data"
+$sheetName     = "Diagnostic-Data"
 
 # Clear existing data in the worksheet
 Export-Excel -Path $excelFilePath -WorksheetName $sheetName -ClearSheet
@@ -50,7 +50,7 @@ Export-Excel -Path $excelFilePath -WorksheetName $sheetName -ClearSheet
 Try {
     foreach($OPSDiagEvent in $OPSDiagData){
         # Extract resource ID and clean up message content
-        $resourceId = $OPSDiagEvent.resourceId
+        $resourceId     = $OPSDiagEvent.resourceId
         $messageContent = $OPSDiagEvent.message -replace "[:_]", " "
 
         # Remove GUID patterns from messages
@@ -62,7 +62,7 @@ Try {
         $eventLink = ""
 
         if ($ruleID -match "KB_(\d{5,7})$") {
-            $KBNumber = $matches[1]
+            $KBNumber  = $matches[1]
             $eventLink = "https://knowledge.broadcom.com/external/article?legacyId=$KBNumber"
         } elseif ($ruleID -match "CVE_\d{4}_\d{5}") {
             $CVENumber = $matches[0] -replace "_", "-"
@@ -105,14 +105,14 @@ Try {
 
 # ----- Email Report with Excel Attachment -----
 $fromEmail = "dale.hassinger@gmail.com"
-$toEmail = "dale.hassinger@vcrocs.info"
-$subject = "VCF Operations Diagnostic Data"
+$toEmail   = "dale.hassinger@vcrocs.info"
+$subject   = "VCF Operations Diagnostic Data"
 
 # Build email body
 $body = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>vCROCS Automation</title><style>body {font-family: Arial;}</style></head><body><p>Diagnostic Data attached.</p><p>Created By: vCROCS Automation</p></body></html>'
 
-$smtpServer = "smtp.gmail.com"
-$smtpPort = 587
+$smtpServer  = "smtp.gmail.com"
+$smtpPort    = 587
 $appPassword = "kl-HackMe-tl"
 
 $emailMessage = New-Object system.net.mail.mailmessage
