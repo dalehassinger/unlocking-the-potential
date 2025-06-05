@@ -1,0 +1,12 @@
+{"83f29f56-0ebf-4e11-98a0-9470fbdd215e": {
+   "resourceKinds": [{
+      "resourceKindKey": "HostSystem",
+      "adapterKindKey": "VMWARE"
+   }],
+   "modificationTime": 1749064484341,
+   "name": "vCROCS Host CPU Over Commit Ratio",
+   "formula": "${this, metric=cpu|vcpus_allocated_on_all_powered_on_vms}/${this, metric=cpu|corecount_provisioned}",
+   "description": "",
+   "unitId": "",
+   "modifiedBy": "6b8550f8-3c36-4c1c-8652-0dfe29ed61a3"
+}}
