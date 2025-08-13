@@ -14,6 +14,8 @@
 
 # ----- Configuration Variables -----
 $vraServer = "vaa.vcrocs.local"
+
+# Path to export CSV file Macbook Air
 $csvPath = "/Users/dalehassinger/Documents/GitHub/PS-TAM-Lab/VCF-Automation-Deployments.csv"
 
 # ----- Authentication -----
@@ -56,15 +58,27 @@ catch {
 # ----- Get Deployments -----
 Write-Host "Retrieving deployments..." -ForegroundColor Yellow
 
-#$deploymentsUri = "https://$vraServer/deployment/api/deployments?page=0&size=100&sort=createdAt%2CDESC"
-$deploymentsUri = "https://$vraServer/deployment/api/deployments"
-
+# Fetch all pages
+$size = 100
+$page = 0
+$deploymentIDs = @()
 
 try {
-    $deploymentsResponse = Invoke-RestMethod -Uri $deploymentsUri -Method GET -Headers $headers -SkipCertificateCheck
-    $deploymentIDs = $deploymentsResponse.content.id
-    
-    Write-Host "Found $($deploymentIDs.Count) deployments" -ForegroundColor Green
+    while ($true) {
+        $deploymentsUri = "https://$vraServer/deployment/api/deployments?page=$page&size=$size&sort=createdAt%2CDESC"
+        $deploymentsResponse = Invoke-RestMethod -Uri $deploymentsUri -Method GET -Headers $headers -SkipCertificateCheck
+
+        $content = @($deploymentsResponse.content)
+        if (-not $content -or $content.Count -eq 0) { break }
+
+        $deploymentIDs += $content.id
+        $page++
+
+        # Stop when last page was smaller than requested size
+        if ($content.Count -lt $size) { break }
+    }
+
+    Write-Host "Found $($deploymentIDs.Count) deployments across $page page(s)" -ForegroundColor Green
 }
 catch {
     Write-Error "Failed to retrieve deployments: $($_.Exception.Message)"
@@ -82,7 +96,10 @@ foreach ($deploymentID in $deploymentIDs) {
         # Get deployment resources
         $resourcesUri = "https://$vraServer/deployment/api/deployments/$deploymentID/resources"
         $resourcesResponse = Invoke-RestMethod -Uri $resourcesUri -Method GET -Headers $headers -SkipCertificateCheck
-        
+
+        #$outPut = "VMname: " + $resourcesResponse.content.properties.name + " |  Component Type: " + $resourcesResponse.content.properties.componentType + " |  IP Address: " + ($resourcesResponse.content.properties.Networks | Select-Object Address).Address
+        #Write-Host $outPut -ForegroundColor Green
+
         # Filter for vSphere machines
         $vsphereMachines = $resourcesResponse.content.properties | Where-Object { $_.componentType -eq "Cloud.vSphere.Machine" }
         
@@ -111,7 +128,7 @@ foreach ($deploymentID in $deploymentIDs) {
         Write-Warning "Failed to process deployment $deploymentID : $($_.Exception.Message)"
         continue
     }
-}
+} # End Foreach
 
 # ----- Export Results -----
 if ($vmCollection.Count -gt 0) {
@@ -132,3 +149,7 @@ else {
 }
 
 Write-Host "Script completed successfully" -ForegroundColor Green
+
+# ----- End of Script -----
+
+# Note: Ensure to run this script in a secure environment and handle credentials appropriately.
