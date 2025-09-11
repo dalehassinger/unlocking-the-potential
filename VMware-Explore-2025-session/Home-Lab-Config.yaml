@@ -1,0 +1,57 @@
+# NH is Nested Host
+NH:
+  VIServer: 192.168.6.100
+  VIUsername: administrator@vcrocs.local
+  VIPassword: VMware1!
+  NestedESXiApplianceOVA: /Users/dalehassinger/Downloads/Nested_ESXi8.0u3c_Appliance_Template_v1.ova
+  verboseLogFile: VCF-Nested-Step-1-Host-Only-YAML.log
+  NestedESXiMGMTvCPU: 12
+  NestedESXiMGMTvMEM: 88
+  NestedESXiMGMTCachingvDisk: 4
+  NestedESXiMGMTCapacityvDisk: 500
+  NestedESXiMGMTBootDisk: 32
+  VMDatastore: ESX-04-2TB-02
+  VMCluster: CLUSTER-03-VCF
+  VMNetwork: VMs
+  VMNetmask: 255.255.252.0
+  VMGateway: 192.168.4.1
+  VMDNS: 192.168.6.1
+  VMNTP: time.google.com
+  VMPassword: VMware1!
+  VMDomain: vcrocs.local
+  VMSyslog: 192.168.6.94
+
+  Hosts:
+    - Hostname: VCF-DDC-ESX178
+      IP: 192.168.4.178
+      Create: True
+    - Hostname: VCF-DDC-ESX179
+      IP: 192.168.4.179
+      Create: False
+    - Hostname: VCF-DDC-ESX180
+      IP: 192.168.4.180
+      Create: True
+
+# vCenter Connection
+vCenter:
+  server: vcsa8x.vcrocs.local
+  username: administrator@vcrocs.local
+  password: VMware1!
+  ignoreCertErrors: true
+
+# A Single ESXi Host Connection
+Host101:
+  server: 192.168.6.101
+  username: root
+  password: VMware1!
+
+# VCF Operations
+OPS:
+  opsURL: https://vao.vcrocs.local
+  opsUsername: admin
+  opsPassword: VMware1!
+  authSource:  local
+
+# GitHub
+GitHub:
+  token: ghp_JB17KCV45a
