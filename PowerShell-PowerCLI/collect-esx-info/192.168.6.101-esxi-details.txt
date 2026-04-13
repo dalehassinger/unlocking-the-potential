@@ -1,0 +1,151 @@
+Collected 2026-04-13 13:28:05 from 192.168.6.101
+
+>>> vmware -vl
+VMware ESXi 9.0.2 build-25148076
+VMware ESXi 9.0 GA
+
+>>> vsish -e get /hardware/bios/dmiInfo
+System Information (type1) {
+   Product Name:Venus Series
+   Vendor Name:Micro Computer (HK) Tech Limited
+   Serial Number:MD496VS126QQMQA00106
+   UUID:[0]: 0x66 
+   [1]: 0x28 
+   [2]: 0xae 
+   [3]: 0x00 
+   [4]: 0xad 
+   [5]: 0x47 
+   [6]: 0x11 
+   [7]: 0xef 
+   [8]: 0xb5 
+   [9]: 0xc2 
+   [10]: 0x84 
+   [11]: 0xde 
+   [12]: 0xcd 
+   [13]: 0xf2 
+   [14]: 0xcb 
+   [15]: 0x00 
+   Version:1.0
+   Wake-up Type:6
+   SKU Number:MGAHWSA
+   Family:Venus
+}
+
+>>> vsish -e get /hardware/cpu/cpuModelName
+12th Gen Intel(R) Core(TM) i5-12600H
+
+>>> vsish -e get /hardware/cpu/cpuInfo
+CPU global information {
+   Hyperthreading state: 2 -> VMK disabled
+   HV state: 3 -> HV Enabled
+   Number of packages:1
+   Number of dies:1
+   Number of tiles:1
+   Number of modules:1
+   Number of cores:12
+   Number of CPUs (threads):12
+   Number of licensable cores:12
+   NVOA:0
+   Hyperthreading security vulnerability mitigated:1
+}
+
+>>> vsish -e get /memory/comprehensive
+Comprehensive {
+   Physical memory estimate:334154552 KB
+   Given to VMKernel:334154552 KB
+   Reliable memory:0 KB
+   Discarded by VMKernel:1596 KB
+   Kernel code region:28672 KB
+   Kernel data and heap:16384 KB
+   Other kernel:522484 KB
+   Non-kernel:44307840 KB
+   Reserved memory at low addresses:330844 KB
+   Free:289277576 KB
+   DRAM free memory:21955484 KB
+}
+
+>>> esxcfg-scsidevs -a
+vmhba0  nvme_pcie         link-n/a       pcie.5800                               (0000:58:00.0) Samsung Electronics Co Ltd SSD 970 EVO/PRO
+vmhba1  nvme_pcie         link-n/a       pcie.5900                               (0000:59:00.0) Kingston Technology Company, Inc. FURY Renegade NVMe SSD [E18] (Heatsink)
+
+>>> esxcfg-scsidevs -A
+vmhba0      t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500
+vmhba1      t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600
+
+>>> esxcfg-scsidevs -c
+Device UID                                                            Device Type      Console Device                                                                            Size      Multipath PluginDisplay Name        
+t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600  Direct-Access    /vmfs/devices/disks/t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600  1907729MB HPP     Local NVMe Disk (t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600)
+t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500  Direct-Access    /vmfs/devices/disks/t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500  476940MB  HPP     Local NVMe Disk (t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500)
+
+>>> esxcli network nic list
+Name    PCI Device    Driver    Admin Status  Link Status  Speed  Duplex  MAC Address         MTU  Description
+------  ------------  --------  ------------  -----------  -----  ------  -----------------  ----  -----------
+vmnic0  0000:02:00.0  i40en     Up            Down             0  Half    58:47:ca:7a:e0:72  1500  Intel(R) Ethernet Controller X710 for 10GbE SFP+
+vmnic1  0000:02:00.1  i40en     Up            Up           10000  Full    58:47:ca:7a:e0:73  1700  Intel(R) Ethernet Controller X710 for 10GbE SFP+
+vmnic2  0000:57:00.0  cndi_igc  Up            Up            1000  Full    58:47:ca:7a:e0:74  1500  Intel Corporation Ethernet Controller I226-V
+vmnic3  0000:5a:00.0  cndi_igc  Up            Up            2500  Full    58:47:ca:7a:e0:75  1700  Intel Corporation Ethernet Controller I226-LM
+
+>>> lspci -v | grep -i Ethernet -A2
+0000:02:00.0 Network controller Ethernet controller: Intel(R) Ethernet Controller X710 for 10GbE SFP+ 
+	 Class 0200: 8086:1572
+
+0000:02:00.1 Network controller Ethernet controller: Intel(R) Ethernet Controller X710 for 10GbE SFP+ 
+	 Class 0200: 8086:1572
+
+0000:57:00.0 Network controller Ethernet controller: Intel Corporation Ethernet Controller I226-V 
+	 Class 0200: 8086:125c
+
+--
+0000:5a:00.0 Network controller Ethernet controller: Intel Corporation Ethernet Controller I226-LM 
+	 Class 0200: 8086:125b
+
+>>> lspci -p | grep -i nvme_pcie
+0000:58:00.0               144d:a808 144d:a801 255/   /     A V nvme_pcie    
+0000:59:00.0               2646:501f 2646:501f 255/   /     A V nvme_pcie    
+
+>>> lspci -p | grep -i cndi_igc
+0000:57:00.0               8086:125c 8086:0000 255/   /     A V cndi_igc     
+0000:5a:00.0               8086:125b 8086:0000 255/   /     A V cndi_igc     
+
+>>> lspci -p | grep -i i40en
+0000:02:00.0               8086:1572 8086:0000 255/   /     A V i40en        
+0000:02:00.1               8086:1572 8086:0000 255/   /     A V i40en        
+
+>>> esxcli storage core adapter list
+HBA Name  Driver     Link State  UID        Capabilities  Description
+--------  ---------  ----------  ---------  ------------  -----------
+vmhba0    nvme_pcie  link-n/a    pcie.5800                (0000:58:00.0) Samsung Electronics Co Ltd SSD 970 EVO/PRO
+vmhba1    nvme_pcie  link-n/a    pcie.5900                (0000:59:00.0) Kingston Technology Company, Inc. FURY Renegade NVMe SSD [E18] (Heatsink)
+
+>>> esxcfg-scsidevs -l
+t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600
+   Device Type: Direct-Access 
+   Size: 1907729 MB
+   Display Name: Local NVMe Disk (t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600)
+   Multipath Plugin: HPP
+   Console Device: /vmfs/devices/disks/t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600
+   Devfs Path: /vmfs/devices/disks/t10.NVMe____KINGSTON_SFYRD2000G_____________________95B78F7168B72600
+   Vendor: NVMe      Model: KINGSTON SFYRD2000G                      Revis: EIFK51.2
+   SCSI Level: 0  Is Pseudo: false Status: on        
+   Is RDM Capable: false Is Removable: false 
+   Is Local: true  Is SSD: true  
+   Other Names: 
+      vml.053f08fa3f97f0ca834ed34a370477f4f2370a80c9e619cbe9f01bad9e711c202c
+      vml.0100000000393542375f384637315f363842375f32363030004b494e475354
+   VAAI Status: unsupported
+t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500
+   Device Type: Direct-Access 
+   Size: 476940 MB
+   Display Name: Local NVMe Disk (t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500)
+   Multipath Plugin: HPP
+   Console Device: /vmfs/devices/disks/t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500
+   Devfs Path: /vmfs/devices/disks/t10.NVMe____Samsung_SSD_970_EVO_Plus_500GB__________BEC7404155382500
+   Vendor: NVMe      Model: Samsung SSD 970 EVO Plus 500GB           Revis: 2B2QEXM7
+   SCSI Level: 0  Is Pseudo: false Status: on        
+   Is RDM Capable: false Is Removable: false 
+   Is Local: true  Is SSD: true  
+   Other Names: 
+      vml.056cfe94a3885913c1a3b859d78742edb0d0a4ff1d25b3f8f8cc269e34b4d1efd4
+      vml.0100000000424543375f343034315f353533385f323530300053616d73756e
+   VAAI Status: unsupported
+
