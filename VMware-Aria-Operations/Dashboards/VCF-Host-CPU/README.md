@@ -1,4 +1,4 @@
-#### VMware VCF Operation Dashboard to monitor show VCF Host CPU Details.  
+#### VMware VCF Operation Dashboard to show VCF Host Physical CPU Details.  
 
 Import the 2 views first and then the Dashboard.  
 
